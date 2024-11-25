@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./components/Home";
+import SiteMap from "./components/SiteMap";
+import ScanPage from "./components/ScanPage";
+import AboutTeam from "./components/AboutTeam";
+import "./App.css";
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="header">
+          <div className="logo">
+            <span className="logo-icon">🌀</span>
+            <h1>CheckVirus</h1>
+          </div>
+          <nav className="menu">
+            <Link to="/home">Home</Link>
+            <Link to="/scan">Scan</Link>
+            <Link to="/site-map">Site Map</Link>
+            <Link to="/team">Our Team</Link>
+          </nav>
+        </header>
+
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/scan" element={<ScanPage />} />
+          <Route path="/site-map" element={<SiteMap />} />
+          <Route path="/team" element={<AboutTeam />} />
+        </Routes>
+
+        <footer className="footer">
+          <p>© 2024 CheckVirus. All rights reserved.</p>
+        </footer>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
